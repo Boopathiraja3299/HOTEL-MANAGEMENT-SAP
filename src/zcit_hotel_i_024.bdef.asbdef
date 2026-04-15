@@ -1,0 +1,38 @@
+unmanaged implementation in class zcl_hotel_handler_024 unique;
+strict ( 2 );
+
+define behavior for ZCIT_HOTEL_I_024 alias HotelBooking
+lock master
+authorization master ( instance )
+{
+  create;
+  update;
+  delete;
+  association _ServiceItems { create; }
+  field ( readonly ) BookingId;
+
+  mapping for zhotel_hdr_024 {
+    BookingId = booking_id;
+    GuestName = guest_name;
+    RoomType = room_type;
+    Status = status;
+  }
+}
+
+define behavior for ZCIT_ITEM_I_024 alias ServiceItem
+lock dependent by _HotelBooking
+authorization dependent by _HotelBooking
+{
+  update;
+  delete;
+  association _HotelBooking;
+  field ( readonly ) ItemId, BookingId;
+
+  mapping for zhotel_itm_024 {
+    ItemId = item_id;
+    BookingId = booking_id;
+    ServiceName = service_name;
+    Price = price;
+    Currency = currency;
+  }
+}

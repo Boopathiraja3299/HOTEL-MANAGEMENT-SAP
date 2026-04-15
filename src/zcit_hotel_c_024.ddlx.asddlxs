@@ -1,0 +1,31 @@
+@Metadata.layer: #CORE
+@UI: {
+  headerInfo: { 
+    typeName: 'Hotel Booking', 
+    typeNamePlural: 'Hotel Bookings', 
+    title: { type: #STANDARD, value: 'BookingId' } 
+  }
+}
+annotate view ZCIT_HOTEL_C_024 with 
+{
+  @UI.facet: [ 
+    { id: 'Booking', purpose: #STANDARD, type: #IDENTIFICATION_REFERENCE, label: 'Booking Details', position: 10 },
+    { id: 'Items', purpose: #STANDARD, type: #LINEITEM_REFERENCE, label: 'Service Items', position: 20, targetElement: '_ServiceItems' } 
+  ]
+  
+  @EndUserText.label: 'Booking ID'
+  @UI: { lineItem: [ { position: 10 } ], identification: [ { position: 10 } ] }
+  BookingId;
+  
+  @EndUserText.label: 'Guest Name'
+  @UI: { lineItem: [ { position: 20 } ], identification: [ { position: 20 } ] }
+  GuestName;
+  
+  @EndUserText.label: 'Room Type'
+  @UI: { lineItem: [ { position: 30 } ], identification: [ { position: 30 } ] }
+  RoomType;
+  
+  @EndUserText.label: 'Booking Status'
+  @UI: { lineItem: [ { position: 40 } ], identification: [ { position: 40 } ] }
+  Status;
+}

@@ -1,0 +1,5 @@
+@EndUserText.label: 'Service Def for Smart Hotel Booking'
+define service ZUI_HOTEL_22EC024 {
+  expose ZCIT_HOTEL_C_024 as HotelBooking;
+  expose ZCIT_ITEM_C_024  as ServiceItem;
+}
